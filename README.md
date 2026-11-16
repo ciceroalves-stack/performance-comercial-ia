@@ -1,6 +1,7 @@
 # 📈 Performance Comercial
 
 > Projeta o fechamento do mês de cada vendedor, identifica **onde está o gargalo** (prospecção, conversão ou ticket) e monta a **pauta da reunião semanal** com roteiros de coaching 1:1.
+[LINK DO PROJETO](https://performance-comercial-ia-roaajr6jnacedessappx9hs.streamlit.app/)
 
 ## Problema de negócio
 
@@ -26,7 +27,3 @@ Coaching genérico não muda resultado. Saber que um vendedor envia poucas propo
 ## Como usar
 
 Abra o app, envie a planilha da equipe ou preencha a tabela. Para só conhecer a ferramenta, ative **Usar equipe de exemplo** na barra lateral. Não precisa de nenhuma chave ou cadastro.
-
-## Publicar
-
-Em [share.streamlit.io](https://share.streamlit.io), crie um app apontando para este repositório e o arquivo `app.py`.
