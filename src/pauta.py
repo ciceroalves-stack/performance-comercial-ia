@@ -16,13 +16,17 @@ ROTEIRO = {
 }
 
 
+def _n(x, c=1):
+    return f"{x:,.{c}f}".replace(",", "X").replace(".", ",").replace("X", ".")
+
+
 def _brl(v):
-    return f"R$ {v:,.0f}".replace(",", ".")
+    return "R$ " + _n(v, 0)
 
 
 def pauta_reuniao(d, eq: dict, dias_restantes: int) -> str:
     t = ["### Pauta da reunião semanal",
-         f"**Equipe:** projeção de **{eq['atingimento_equipe_pct']}%** da meta "
+         f"**Equipe:** projeção de **{_n(eq['atingimento_equipe_pct'])}%** da meta "
          f"({_brl(eq['projecao_equipe'])} de {_brl(eq['meta_equipe'])}). "
          f"{eq['em_risco']} em risco e {eq['em_atencao']} em atenção. Faltam {dias_restantes} dias úteis."]
 
@@ -40,8 +44,8 @@ def pauta_reuniao(d, eq: dict, dias_restantes: int) -> str:
             continue
         pergunta, compromisso = ROTEIRO[v["gargalo"]]
         tend = v["tendencia_vs_media"]
-        hist = f"{abs(tend)} p.p. {'abaixo' if tend < 0 else 'acima'} da média dos últimos 3 meses"
-        t.append(f"\n**{v['vendedor']}** · {v['risco']} · projeção {v['atingimento_proj_pct']}% ({hist})\n"
+        hist = f"{_n(abs(tend))} p.p. {'abaixo' if tend < 0 else 'acima'} da média dos últimos 3 meses"
+        t.append(f"\n**{v['vendedor']}** · {v['risco']} · projeção {_n(v['atingimento_proj_pct'])}% ({hist})\n"
                  f"- Gargalo: {v['gargalo']}\n"
                  f"- Pergunta de abertura: _\"{pergunta}\"_\n"
                  f"- Compromisso da semana: {compromisso}\n"
@@ -49,6 +53,6 @@ def pauta_reuniao(d, eq: dict, dias_restantes: int) -> str:
 
     top = d[d["risco"] == "🟢 No ritmo"].sort_values("atingimento_proj_pct", ascending=False)
     if len(top):
-        nomes = ", ".join(f"{r.vendedor} ({r.atingimento_proj_pct}%)" for r in top.itertuples())
+        nomes = ", ".join(f"{r.vendedor} ({_n(r.atingimento_proj_pct)}%)" for r in top.itertuples())
         t.append(f"\n**Reconhecimento:** {nomes} 👏 — peça para compartilharem com a equipe o que está funcionando.")
     return "\n".join(t)
