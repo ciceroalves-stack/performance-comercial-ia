@@ -2,6 +2,8 @@
 
 > Projeta o fechamento do mês de cada vendedor, identifica **onde está o gargalo** (prospecção, conversão ou ticket) e monta a **pauta da reunião semanal** com roteiros de coaching 1:1.
 
+### 🔗 [Abrir o app ao vivo](https://performance-comercial-ia-roaajr6jnacedessappx9hs.streamlit.app/)
+
 ## Problema de negócio
 
 Passei 12 anos como gerente de vendas. O padrão é sempre o mesmo: o gerente descobre que alguém não vai bater a meta na última semana do mês, quando já não dá para reagir. E quando descobre, a conversa vira "precisa vender mais", sem diagnóstico do *porquê*.
